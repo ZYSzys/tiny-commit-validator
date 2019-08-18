@@ -7,7 +7,8 @@
   },
   "scripts": {
     "test": "tap -j4 --cov test/*.js",
-    "lint": "prettier --single-quote --write '**/*.js'"
+    "lint": "prettier --single-quote --write '**/*.js'",
+    "test-ci": "npm run test -- --coverage-report=lcov"
   },
   "author": "",
   "license": "ISC",
