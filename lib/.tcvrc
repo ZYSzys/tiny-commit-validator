@@ -2,9 +2,9 @@
   "subsystems": [
     "build",
     "deps",
-    "docs",
     "feat",
     "fix",
+    "pct",
     "style",
     "test"
   ]
