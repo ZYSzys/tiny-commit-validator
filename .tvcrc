@@ -1,0 +1,11 @@
+{
+  "subsystems": [
+    "build",
+    "deps",
+    "docs",
+    "feat",
+    "fix",
+    "style",
+    "test"
+  ]
+}

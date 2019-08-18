@@ -1,0 +1,24 @@
+{
+  "name": "tiny-commit-validator",
+  "version": "1.0.0",
+  "description": "A tiny command line tool for validating commit messages.",
+  "bin": {
+    "tcv": "./bin/tcv.js"
+  },
+  "scripts": {
+    "test": "tap -j4 --cov test/*.js",
+    "lint": "prettier --single-quote --write '**/*.js'"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "2.4.2",
+    "gitlint-parser-node": "1.1.0",
+    "mkdirp": "0.5.1",
+    "yargs": "13.3.0"
+  },
+  "devDependencies": {
+    "prettier": "1.18.2",
+    "tap": "14.6.1"
+  }
+}
