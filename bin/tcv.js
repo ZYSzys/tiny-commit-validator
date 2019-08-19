@@ -5,6 +5,8 @@ const { exec, execSync } = require('child_process');
 const yargs = require('yargs');
 const Validator = require('../lib');
 const pretty = require('../lib/pretty');
+const utils = require('../lib/utils');
+const subsystem = require('../lib/rules/subsystem')
 
 const argv = yargs
   .usage('Validate commit message.\nUsage: $0 sha')
@@ -28,15 +30,25 @@ const argv = yargs
   })
   .argv;
 
+const validator = new Validator(argv);
+
 if (argv.list) {
+  const rules = Array.from(validator.rules.keys());
+  const maxLength = rules.reduce((l, item) => {
+    return Math.max(l, item.length);
+  }, 0);
+
+  for (const rule of validator.rules.values()) {
+    utils.describeRule(rule, maxLength);
+  }
   return;
 }
 
 if (argv['list-subsystems']) {
+  utils.describeSubsystem(subsystem.defaults.subsystems.sort());
   return;
 }
 
-const validator = new Validator(argv);
 validator.on('commit', c => {
   pretty(c.commit, c.messages, validator);
   run();
