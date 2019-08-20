@@ -3,6 +3,7 @@
 
 const { exec, execSync } = require('child_process');
 const yargs = require('yargs');
+const chalk = require('chalk');
 const Validator = require('../lib');
 const pretty = require('../lib/pretty');
 const utils = require('../lib/utils');
@@ -64,8 +65,8 @@ function run() {
     process.exitCode = validator.errors;
     if (validator.errors > 0) {
       process.on('exit', () => {
-        // execSync('git commit --amend');
-        console.log('need to change commit message');
+        execSync('git reset --soft HEAD~');
+        console.log(chalk.red('Please reedit your commit message'));
       });
     }
     return;

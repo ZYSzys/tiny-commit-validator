@@ -10,7 +10,12 @@
     "lint": "prettier --single-quote --write '**/*.js'",
     "test-ci": "npm run test -- --coverage-report=lcov"
   },
-  "author": "",
+  "husky": {
+    "hooks": {
+      "post-commit": "./bin/tcv.js"
+    }
+  },
+  "author": "ZYSzys",
   "license": "ISC",
   "dependencies": {
     "chalk": "2.4.2",
@@ -19,6 +24,7 @@
     "yargs": "13.3.0"
   },
   "devDependencies": {
+    "husky": "3.0.4",
     "prettier": "1.18.2",
     "tap": "14.6.1"
   }
